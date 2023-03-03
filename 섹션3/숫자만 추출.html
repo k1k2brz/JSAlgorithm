@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(str){
+                // parseInt가 앞자리 0을 잘라버림
+                let answer = str.replace(/[^0-9]/g, '');
+                return parseInt(answer, 10);
+            }
+            
+            let str="g0en2T0s8eSoft";
+            console.log(solution(str));
+
+            /*
+             function solution(str){
+                let answer="";
+                for(let x of str){
+                    if(!isNaN(x)) answer+=x;  isNaN(x)숫자냐 아니냐
+                }  
+                return parseInt(answer);
+            }
+            */
+        </script>
+    </body>
+</html>
