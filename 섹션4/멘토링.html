@@ -5,41 +5,9 @@
   </head>
   <body>
     <script>
-      const getCombinations = (arr, num) => {
-        const results = [];
-
-        if (num === 1) return arr.map((v) => [v]);
-
-        arr.forEach((fixed, index, origin) => {
-          const rest = origin.slice(index + 1);
-          const combinations = getCombinations(rest, num - 1);
-          const attached = combinations.map((v) => [fixed, ...v]);
-
-          results.push(...attached);
-        });
-
-        return results;
-      };
-
       const solution = (test) => {
         let answer = 0;
-        let tmp = [];
-
-        for (let i = 0; test.length > i; i++) {
-          let com = getCombinations(test[i], 2);
-          for (let j = 0; 2 > j; j++) {
-            let cnt = 0;
-            for (let k = 0; k < test.length; k++) {
-              let pi = (pj = 0);
-              for (let s = 0; s < test[0].length; s++) {
-                if (test[k][s] === i) pi = s;
-                if (test[k][s] === j) pj = s;
-              }
-              if (pi < pj) cnt++;
-            }
-            if(cnt === test.length) answer++
-          }
-        }
+        // 다시 풀어보기
 
         return answer;
       };
