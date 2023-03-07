@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(m, arr){
+                let answer = 0;
+                let sum = 0;
+
+                // 1번째 방법
+                // for (let i = 0; i < arr.length; i++) {
+                //     let tmp = arr[i]
+                //     for (let j = 1; j < arr.length; j++) {
+                //         if (i < j && tmp < m) {
+                //             tmp += arr[j]
+                //         }
+                //     }
+                //     if (tmp === m) answer++
+                // }
+
+                // 2번 방법
+                // for (let i = 0; i < arr.length; i++) {
+                //     let p1 = i
+                //     let p2 = i + 1
+                //     let tmp = arr[i]
+                //     while (p2 < arr.length && tmp < m) {
+                //         tmp += arr[p2]
+                //         p2++
+                //     }
+                //     if (tmp === m) answer++
+                // }
+
+                // 2번 보완 (강의 본 뒤)
+                let lt = 0
+                for (let i = 0; i < arr.length; i++) {
+                    sum += arr[i]
+                    if (sum === m) answer++
+                    while (sum >= m) {
+                        sum -= arr[lt]
+                        lt++
+                        if (sum === m) answer++
+                    }
+                }
+                  
+                return answer;
+            }
+
+            // 강의의 풀이
+            // function solution(m, arr){
+            //     let answer=0, lt=0, sum=0;
+            //     for(let rt=0; rt<arr.length; rt++){
+            //         sum+=arr[rt];
+            //         if(sum===m) answer++;
+            //         while(sum>=m){
+            //             sum-=arr[lt++]; 이전 값을 뺀다
+            //             if(sum===m) answer++;       
+            //         }
+            //     }        
+            //     return answer;
+            // }
+            
+            
+            let a=[1, 2, 1, 3, 1, 1, 1, 2];
+            console.log(solution(6, a));
+
+            
+        </script>
+    </body>
+</html>

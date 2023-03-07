@@ -7,7 +7,35 @@
     <script>
       const solution = (test) => {
         let answer = 0;
-        // 다시 풀어보기
+        const iLength = test.length;
+        const jLength = test[0].length;
+        let tmp = []
+
+        for (let i = 1; i <= jLength; i++) {
+          for (let j = 1; j <= jLength; j++) {
+            let cnt = 0;
+            for (let k = 0; k < iLength; k++) {
+              let pi = 0;
+              let pj = 0;
+              for (let s = 0; s < jLength; s++) {
+                if (test[k][s] === i) {
+                  pi = s;
+                }
+                if (test[k][s] === j) {
+                  pj = s;
+                }
+              }
+              if (pi < pj) {
+                cnt++
+              } 
+            }
+            if (cnt === iLength) {
+              tmp.push([i, j])
+              answer++
+            }
+          }
+        }
+        console.log(tmp)
 
         return answer;
       };
