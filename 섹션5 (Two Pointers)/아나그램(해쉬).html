@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(str1, str2){
+                let answer="YES"; 
+                const anagram = new Map()
+
+                for (let i of str1) {
+                    if (anagram.has(i)) {
+                        anagram.set(i, anagram.get(i)+1)
+                    } else {
+                        anagram.set(i, 1)
+                    }
+                }
+
+                // 나의 풀이
+                // for (let i of str2) {
+                //     if (!anagram.has(i) || !anagram.get(i) || anagram.size !== str2.length) answer = "NO"
+                // }
+                
+                // 강의
+                for (let i of str2) {
+                    if (!anagram.has(i) || anagram.size !== str2.length || anagram.get(i) === 0) answer = "NO"
+                    anagram.set(i, anagram.get(i)-1)
+                }
+                
+                return answer;
+            }
+            
+            let a="AbaAeCeK";
+            let b="baeeACA";
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html>

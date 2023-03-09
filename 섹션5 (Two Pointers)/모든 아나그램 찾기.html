@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 해쉬, 투포인터, 슬라이딩 윈도우
+            
+            function compareMaps(map1, map2){
+                
+                return true;
+            }
+            function solution(s, t){
+                let answer = 0;
+                const sMap = new Map();
+                const tMap = new Map();
+                let cnt = 0
+
+                // for (let i of s) {
+                //     if (!sMap.has(i)) {
+                //         sMap.set(i, 1)
+                //     } else {
+                //         sMap.set(i, sMap.get(i)+1)
+                //     }
+                // }
+
+                for (let i of t) {
+                    if (!tMap.has(i)) {
+                        tMap.set(i, 1)
+                    } else {
+                        tMap.set(i, tMap.get(i)+1)
+                    }
+                }
+
+                for (let i = 0; i < t.length; i++) {
+                    if (!sMap.has(s[i])) {
+                        sMap.set(s[i], 1)
+                    } else {
+                        sMap.set(s[i], sMap.get(i)+1)
+                    }
+                }
+
+                const tl = t.length
+
+                for (let i = tl; i < s.length; i++) {
+                    if (sMap.has(s[i])) {
+                        // sMap.set(s[i], sMap.get(s[i])-1)
+                    } else {
+                        sMap.set(s[i], 1)
+                        sMap.delete(s[i - tl - 1 - cnt])
+                    }
+                    console.log(sMap)
+                    cnt++
+                }
+                
+                
+                return answer;
+            }
+            
+            let a="bacaAacba";
+            let b="abc";
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html>

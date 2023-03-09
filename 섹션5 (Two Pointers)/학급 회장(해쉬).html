@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                // 1번째 방법
+                /*
+                let answer = "";
+                let student = []
+                let sum = 0
+
+                for (let i = 0; i < s.length; i++) {
+                    if(!student.includes(s[i])) {
+                        student.push(s[i])
+                    }
+                }
+                
+                for (let i = 0; i < student.length; i++) {
+                    let tmp = 0
+                    for (let j = 0; j < s.length; j++) {
+                        if (student[i] === s[j]) {
+                            tmp++
+                        }
+                    }
+                    if (tmp > sum) {
+                        sum = tmp
+                        answer = student[i]
+                    }
+                }
+                */
+
+                // 2번 HashMap
+                let answer = "";
+                const student = new Map()
+                let max = 0;
+                
+                for(let i of s) {
+                    if (student.has(i)) {
+                        student.set(i, student.get(i)+1)
+                    } else if(!student.has(i)) {
+                        student.set(i, 1)
+                    }
+                }
+                
+                for (let [key, value] of student) {
+                    if (max < value) {
+                        max = value
+                        answer = key
+                    }
+                }
+
+                return answer;
+            }
+
+            let str="BACBACCACCBDEDE";
+            console.log(solution(str));
+
+            // 출처
+            // https://erim1005.tistory.com/entry/Javascript-%EC%97%90%EC%84%9C-Object%EB%A5%BC-%ED%95%B4%EC%8B%9C%EB%A7%B5%EC%B2%98%EB%9F%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EB%A7%88%EC%84%B8%EC%9A%94
+        </script>
+    </body>
+</html>
