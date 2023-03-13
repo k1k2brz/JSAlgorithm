@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 내가 푼 것
+            function solution(need, plan){
+                let answer="YES";
+                let queue = Array.from(need)
+                
+                for (let i of plan) {
+                    if (queue.includes(i)) {
+                        if (i !== queue.shift()) answer = "NO"
+                    }
+                }
+
+                return answer;
+            }
+
+            /* 강의
+            function solution(need, plan){
+                let answer="YES";
+                let queue=need.split('');
+                for(let x of plan){
+                    if(queue.includes(x)){
+                        if(x!==queue.shift()) return "NO";
+                    }
+                }
+                if(queue.length>0) return "NO";  이 부분 추가 해줘야함
+                return answer;
+            }
+            */
+
+            let a="CBA";
+            let b="CDABGE";
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html>
