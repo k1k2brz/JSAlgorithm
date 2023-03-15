@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 나의 풀이
+            function solution(arr){
+                let answer = arr;
+                
+                for (let i = 0; i < arr.length; i++) {
+                    let tmp = arr[i]
+                    let idx = i
+                    for (let j = i+1; j < arr.length; j++) {
+                        if (tmp > arr[j]) {
+                            tmp = arr[j]
+                            idx = j
+                        }
+                    }
+                    arr.splice(idx, 1);
+                    arr.splice(i, 0, tmp)
+                } // 강의의 풀이대로 배열로 직접 값 변경하면 변수 한번만 선언해도 됨
+                
+                return answer;
+            }
+
+            /* 강의의 풀이
+            function solution(arr){
+                let answer=arr;
+                for(let i=0; i<arr.length; i++){
+                    let idx=i;
+                    for(let j=i+1; j<arr.length; j++){
+                        if(arr[j]<arr[idx]) idx=j;
+                    }
+                    [arr[i], arr[idx]] = [arr[idx], arr[i]];
+                } 
+                return answer;
+            }
+            */
+
+            let arr=[13, 5, 11, 7, 23, 15];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
