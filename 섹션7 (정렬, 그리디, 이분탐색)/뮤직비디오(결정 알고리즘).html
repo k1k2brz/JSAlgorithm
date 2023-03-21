@@ -4,11 +4,38 @@
         <title>출력결과</title>
     </head>
     <body>
-        <script>            
+        <script>
+            const count = (songs, capacity) => {
+                let cnt = 1
+                let sum = 0
+
+                for (let i of songs) {
+                    if (sum + i > capacity) {
+                        cnt++
+                        sum = i
+                    } else {
+                        sum += i
+                    }
+                }
+
+                return cnt;
+            }
+                    
             function solution(m, songs){
                 let answer = 0;
+                let left = Math.max(...songs)
+                let right = songs.reduce((prev, curr) => prev + curr, 0)
+
+                while (left <= right) {
+                    let mid = parseInt((left+right) / 2);
+                    if(count(songs, mid) <= m) {
+                        answer = mid
+                        right = mid - 1
+                    } else {
+                        left = mid + 1
+                    }
+                }
                 
-                // 다시 풀기 중요함
                 
                 return answer;
             }
