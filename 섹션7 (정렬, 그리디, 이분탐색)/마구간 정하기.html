@@ -5,16 +5,36 @@
     </head>
     <body>
         <script>
+            //
+            // 내일 설명 다시 듣고 풀어보기
             function count(stable, dist){
                let cnt = 1
                let ep = stable[0];
 
-
+               for (let i = 1; i < stable.length; i++) {
+                    if (ep < stable[i]) {
+                        ep 
+                    }
+                }
+                
                
                return cnt;
             }
             function solution(c, stable){
                 let answer = 0;
+                stable.sort((a, b) => a - b)
+                let left = 1
+                let right = stable[stable.length-1]
+
+                while (left <= right) {
+                    let mid = parseInt((left+right) / 2);
+                    if(count(songs, mid) <= m) {
+                        answer = mid
+                        right = mid - 1
+                    } else {
+                        left = mid + 1
+                    }
+                }
                 
                 return answer;
             }
