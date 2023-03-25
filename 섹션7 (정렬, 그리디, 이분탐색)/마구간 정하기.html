@@ -5,41 +5,45 @@
     </head>
     <body>
         <script>
-            //
-            // 내일 설명 다시 듣고 풀어보기
+            // 1회 실패 힌트를 듣고 풀었던 것.
+
             function count(stable, dist){
                let cnt = 1
                let ep = stable[0];
 
+               // dist(mid: 최소거리)값 이상으로 들어가면 된다.
                for (let i = 1; i < stable.length; i++) {
-                    if (ep < stable[i]) {
-                        ep 
+                    if (stable[i] - ep >= dist) {
+                        cnt++
+                        ep = stable[i];
                     }
-                }
-                
-               
+                }                
                return cnt;
             }
+
             function solution(c, stable){
                 let answer = 0;
                 stable.sort((a, b) => a - b)
-                let left = 1
+                let left = 1 // stable[0]가 1이 아닐시 제대로 된 값이 나오지 않기에 1로 설정
+                // let left = stable[0] // arr2번 식을 도입했을 경우 mid가 5~14로 나눠지기 때문에 0 반환
                 let right = stable[stable.length-1]
 
                 while (left <= right) {
                     let mid = parseInt((left+right) / 2);
-                    if(count(songs, mid) <= m) {
+                    // mid는 최소 거리가 된다.
+                    if(count(stable, mid) >= c) {
                         answer = mid
-                        right = mid - 1
-                    } else {
                         left = mid + 1
+                    } else {
+                        right = mid - 1
                     }
                 }
                 
                 return answer;
             }
 
-            let arr=[1, 2, 8, 4, 9];
+            let arr = [1, 2, 8, 4, 9];
+            // let arr2 = [5, 6, 8, 12, 14];
             console.log(solution(3, arr));
         </script>
     </body>

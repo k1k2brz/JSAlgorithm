@@ -27,6 +27,7 @@
                 let left = Math.max(...songs)
                 let right = songs.reduce((prev, curr) => prev + curr, 0)
 
+                // while + mid 공식은 일단 외울것
                 while (left <= right) {
                     let mid = parseInt((left+right) / 2);
                     if(count(songs, mid) <= m) {
