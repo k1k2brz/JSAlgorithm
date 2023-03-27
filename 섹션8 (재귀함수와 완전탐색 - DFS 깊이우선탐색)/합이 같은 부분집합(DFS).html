@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 나의 풀이
+
+            function solution(arr){
+                let answer = "NO"
+                let arrSum = arr.reduce((a, b) => a + b)
+                
+                const DFS = (n, sum) => {
+                    let cnt = 0
+                    if (n === arr.length) {
+                        return;
+                    } else {
+                        console.log(arrSum - sum, sum)
+                        DFS(n+1, sum + arr[n])
+                        DFS(n+1, sum) // sum에 +하지 않는 경우
+                    }
+                    if ((arrSum - sum) === sum) answer = "YES"
+                }
+                DFS(0, 0)
+                
+                return answer;
+            }
+
+            let arr=[1, 3, 5, 6, 7, 10];
+            console.log(solution(arr));
+
+            /* 강의의 풀이
+            function solution(arr){
+                let answer="NO", flag=0;
+                let total=arr.reduce((a, b)=>a+b, 0);
+                let n=arr.length;
+                function DFS(L, sum){
+                    if(flag) return;
+                    if(L===n){
+                        if((total-sum)===sum){
+                            answer="YES";
+                            flag=1; // 답이 발견되면 바로 return할 수 있도록 flag변수 사용
+                        }
+                    }
+                    else{
+                        DFS(L+1, sum+arr[L]);
+                        DFS(L+1, sum);
+                    }
+                }
+                DFS(0, 0);
+                return answer;
+            }
+
+            let arr=[1, 3, 5, 6, 7, 10];
+            console.log(solution(arr));
+            */
+        </script>
+    </body>
+</html>
