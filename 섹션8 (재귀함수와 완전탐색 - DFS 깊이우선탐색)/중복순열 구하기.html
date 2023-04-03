@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 다시 풀어보기
+            function solution(n, m){
+                // for문으로 하면 m값이 올라갈 때 마다 for문이 늘어남
+                let answer = [];
+                let tmp = Array.from({length:m}, () => 0);
+                const DFS = (l) => {
+                    if (l === m) {
+                        answer.push(tmp.slice()); // 깊은 복사를 해줘야 함
+                    } else {
+                        for (let i = 1; i <= n; i++) {
+                            tmp[l] = i
+                            DFS(l + 1)
+                        }
+                    }
+                }
+                
+                DFS(0);
+                return answer;
+            }
+
+            console.log(solution(3, 2));
+        </script>
+    </body>
+</html>
