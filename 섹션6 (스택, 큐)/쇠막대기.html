@@ -9,7 +9,6 @@
                 let answer=0;
                 let stack=[];
                 // 스택 x 2 (일시 더하고 ')'면 뺸다 그리고 ()면 x2
-                let tmp = 0
 
                 for (let i = 0; i < s.length; i++) {
                     if (s[i] === "(") {
@@ -23,7 +22,7 @@
                         }
                     }
                     
-                    console.log(answer, stack.length, tmp)
+                    console.log(answer, stack.length)
                 }
 
                 
