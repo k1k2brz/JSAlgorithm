@@ -9,22 +9,27 @@
             function solution(size, arr){
                 let answer = Array(size).fill().map((v, i) => 0)
                 
-                for (let i = 0; i < arr.length; i++) {
-                    let tmp = arr[i]
-                    if (answer.includes(tmp)) {
-                        answer.splice(answer.indexOf(tmp), 1)
-                        answer.splice(0, 0, arr[i])
-                    } else {
-                        // unshift로 해도 됨
-                        answer.splice(4, 1)
-                        answer.splice(0, 0, arr[i])
-                    }
-                }
+                // for (let i = 0; i < arr.length; i++) {
+                //     let tmp = arr[i]
+                //     if (answer.includes(tmp)) {
+                //         answer.splice(answer.indexOf(tmp), 1)
+                //         answer.splice(0, 0, arr[i])
+                //     } else {
+                //         // unshift로 해도 됨
+                //         answer.splice(4, 1)
+                //         answer.splice(0, 0, arr[i])
+                //     }
+                // }
 
-                /* 강의의 풀이
+                // 강의의 풀이
                 arr.forEach(x => {
                     let pos=-1;
-                    for(let i=0; i<size; i++) if(x===answer[i]) pos=i;
+                    for(let i=0; i<size; i++) {
+                        if(x===answer[i]) {
+                            pos=i;
+                        } 
+                    }
+                    // 제일 뒤에서부터 당긴다
                     if(pos===-1){
                         for(let i=size-1; i>=1; i--){
                             answer[i]=answer[i-1];
@@ -37,7 +42,6 @@
                     } 
                     answer[0]=x;  
                 }); 
-                */
 
                 return answer;
             }
