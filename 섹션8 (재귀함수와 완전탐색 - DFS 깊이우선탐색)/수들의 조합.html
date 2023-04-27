@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k, arr, m) {
+        let answer = 0;
+        function DFS(L, s, sum) {
+          if (L === k) {
+            if (sum % m === 0) answer++;
+            return;
+          } else {
+            for (let i = s; i < n; i++) {
+              DFS(L + 1, i + 1, sum + arr[i]);
+            }
+          }
+        }
+
+        DFS(0, 0, 0);
+        return answer;
+      }
+
+      let arr = [2, 4, 5, 8, 12];
+      console.log(solution(5, 3, arr, 6));
+
+      // 시행착오
+    //   function solution(n, k, arr, m) {
+    //     let answer = 0;
+    //     let tmp = Array.from({ length: n }, () => 0); // 숫자 어떻게 들어가는지 보기 위함
+    //     function DFS(L, s, sum) {
+    //       if (L === k) {
+    //         if (sum % m === 0) answer++;
+    //         return;
+    //       } else {
+    //         for (let i = s; i < n; i++) { // i = 0 이 아니라 s라고 해야 쓸데없는 중복이 사라진다.
+    //             tmp[L] = arr[i];
+    //             console.log(tmp)
+    //           DFS(L + 1, i + 1, sum + arr[i]); // 여기에 sum += arr[i]이라 해서 계산이 계속 된 것
+    //         }
+    //       }
+    //     }
+
+    //     DFS(0, 0, 0);
+    //     return answer;
+    //   }
+    </script>
+  </body>
+</html>
