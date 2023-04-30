@@ -36,37 +36,37 @@
                 
                 
                 // 강의 힌트 듣고 푼 2번 풀이
-                let timeline = []
-                let cnt = 0
+                // let timeline = []
+                // let cnt = 0
 
-                for (let i of times) {
-                    timeline.push([i[0], 'st'])
-                    timeline.push([i[1], 'et'])
-                }
+                // for (let i of times) {
+                //     timeline.push([i[0], 'st'])
+                //     timeline.push([i[1], 'et'])
+                // }
 
-                timeline.sort((a, b) => {
-                    if (a[0] === b[0]) {
-                        // charAt을 사용하면 's'만 반환되어 st가 먼저 출력됨
-                        return a[1].charCodeAt() - b[1].charCodeAt()
-                    } else {
-                        return a[0] - b[0]
-                    }
-                })
+                // timeline.sort((a, b) => {
+                //     if (a[0] === b[0]) {
+                //         // charAt을 사용하면 's'만 반환되어 st가 먼저 출력됨
+                //         return a[1].charCodeAt() - b[1].charCodeAt()
+                //     } else {
+                //         return a[0] - b[0]
+                //     }
+                // })
 
-                for (let i of timeline) {
-                    if (i[1] === 'st') {
-                        cnt++
-                    } else {
-                        cnt--
-                    }
-                    answer = Math.max(answer, cnt)
-                }
-                console.log(timeline)
+                // for (let i of timeline) {
+                //     if (i[1] === 'st') {
+                //         cnt++
+                //     } else {
+                //         cnt--
+                //     }
+                //     answer = Math.max(answer, cnt)
+                // }
+                // console.log(timeline)
                 
                 return answer;
             }
 
-            /* 강의의 풀이
+            // 강의의 풀이
             function solution(times){
                 let answer=Number.MIN_SAFE_INTEGER;
                 let T_line=[];
@@ -82,11 +82,11 @@
                 for(let x of T_line){
                     if(x[1]==='s') cnt++;
                     else cnt--;
+                    console.log(x, cnt)
                     answer=Math.max(answer, cnt);
                 }
                 return answer;
             }
-            */
 
             let arr=[[14, 18], [12, 15], [15, 20], [20, 30], [5, 14]];
             console.log(solution(arr));

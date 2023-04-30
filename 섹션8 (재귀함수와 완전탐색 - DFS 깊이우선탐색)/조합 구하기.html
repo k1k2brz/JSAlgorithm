@@ -8,13 +8,12 @@
             function solution(n, m){         
                 let answer = [];
                 let tmp = Array.from({ length : m }, () => 0);
-                function DFS(L, s){
+                const DFS = (L, s) => {
                     if (L === m) {
                         answer.push(tmp.slice())
                     } else {
                         for (let i = s; i <= n; i++) {
                             tmp[L] = i
-                            console.log(tmp)
                             DFS(L + 1, i + 1)
                         }
                     }
