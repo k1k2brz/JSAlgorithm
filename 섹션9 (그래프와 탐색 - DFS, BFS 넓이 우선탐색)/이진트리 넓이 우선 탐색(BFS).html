@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // BFS의 개념 - 최단거리를 구한다
+            // BFS는 Queue에서 나온 값을 pop하면서 진행한다
+            function solution(){  
+                let answer="";
+                let queue=[];
+                queue.push(1);
+                while(queue.length) {
+                    let v = queue.shift();
+                    answer += v + " ";
+                    for (let nv of [v * 2, v * 2 + 1]) {
+                        if (nv > 7) continue;
+                        queue.push(nv)
+                    }
+                }
+                
+                return answer;
+            }
+
+            console.log(solution()); // 1 2 3 4 5 6 7
+        </script>
+    </body>
+</html>
+
+
+
