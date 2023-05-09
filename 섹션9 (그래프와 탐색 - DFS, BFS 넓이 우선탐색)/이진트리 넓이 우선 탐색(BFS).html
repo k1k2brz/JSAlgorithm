@@ -14,7 +14,7 @@
                 while(queue.length) {
                     let v = queue.shift();
                     answer += v + " ";
-                    for (let nv of [v * 2, v * 2 + 1]) {
+                    for (let nv of [v * 2, v * 2 + 1]) { // v 에서 갈 수 있는 지점 (v = 2이면 4, 5가 나온다)
                         if (nv > 7) continue;
                         queue.push(nv)
                     }
